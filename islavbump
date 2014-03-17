@@ -1,0 +1,44 @@
+#!/bin/bash
+
+grep -rl "version = 7.x-dev" | sed -i 's#version = 7.x-dev#version = 7.x-1.3#g'
+
+cd islandora && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_bagit && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_batch && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_book_batch && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_bookmark && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_checksum && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_checksum_checker && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_fits && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_image_annotation && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_importer && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_internet_archive_bookreader && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_jwplayer && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_marcxml && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_oai && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_ocr && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_openseadragon && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_paged_content && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_premis && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_scholar && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_simple_workflow && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_solr_facet_pages && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_solr_metadata && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_solr_search && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_solution_pack_audio && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_solution_pack_book && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_solution_pack_collection && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_solution_pack_compound && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_solution_pack_image && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_solution_pack_large_image && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_solution_pack_newspaper && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_solution_pack_pdf && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_solution_pack_video && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_solution_pack_web_archive && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_sync && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_xacml_editor && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_xml_forms && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd islandora_xmlsitemap && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd objective_forms && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd php_lib && git co 7.x-1.3 && git commit -m "Version bump for 7.x-1.3" . && git push origin 7.x-1.3 && cd ..
+cd tuque && git co 1.3 && git commit -m "Version bump for 1.3" . && git push origin 1.3 && cd ..
