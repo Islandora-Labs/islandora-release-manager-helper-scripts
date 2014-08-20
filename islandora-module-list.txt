@@ -21,6 +21,7 @@ islandora_simple_workflow
 islandora_solr_facet_pages
 islandora_solr_metadata
 islandora_solr_search
+islandora_solr_views
 islandora_solution_pack_audio
 islandora_solution_pack_book
 islandora_solution_pack_collection
