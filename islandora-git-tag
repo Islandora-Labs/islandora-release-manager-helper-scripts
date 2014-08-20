@@ -1,0 +1,55 @@
+#!/bin/bash
+# Bash script to quickly tag all Islandora Foundation for a release.
+
+# Usage info
+show_help() {
+  cat << EOF
+  Usage: ${0##*/} [-h] [-m MODULE LIST] [-p PATH] [-ta GIT TAG A] [-tm GIT TAG M] ...
+  Clone all Islandora Foundation modules to a given path.
+    
+      -h              display this help and exit
+      -m MODULE LIST  path to line delimited list of modules.
+      -ta GIT TAG A   git tag -a. example: "7.x-1.3-RC1"
+      -tm GIT TAG M   git tag -m. example: "Islandora 7.x-1.3-RC1"
+      -p PATH         path to the Islandora Foundation modules should be clone.
+EOF
+}                
+
+ISLANDORA_CLONE_PATH=""
+ISLANDORA_GIT_TAGA=""
+ISLANDORA_GIT_TAGM=""
+ISLANDORA_MODULES_LIST=""
+
+OPTIND=1
+
+while getopts "h:p:m:ta:tm:" opt; do
+  case "$opt" in
+    h)
+      show_help
+      exit 0
+      ;;
+    m) ISLANDORA_MODULES_LIST=$OPTARG
+      ;;
+    p) ISLANDORA_CLONE_PATH=$OPTARG
+      ;;
+    ta) ISLANDORA_GIT_TAGA=$OPTARG
+      ;;
+    tm) ISLANDORA_GIT_TAGM=$OPTARG
+      ;;      
+    '?')
+      show_help >&2
+      exit 1
+      ;;
+  esac
+done
+
+if [[ -n $opt ]]; then
+  # get modules
+  cd $ISLANDORA_CLONE_PATH
+  cat $ISLANDORA_MODULES_LIST | while read line; do
+    cd $line
+    git tag -a $ISLANDORA_GIT_TAGA -m $ISLANDORA_GIT_TAGM
+    #git push --tags
+    cd ..
+  done
+fi

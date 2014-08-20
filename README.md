@@ -21,9 +21,9 @@ Run after code freeze. Make sure everything is in the release branch that should
 
 Bumps the version number in each repo's `.info` file.
 
-**Islatag**
+**islandora-git-tag**
 
-Create release tags for each repository, and pushes.
+Tags and pushs all Islandora Foundation modules from a line delimited list.
 
 ### License
 
