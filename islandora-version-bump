@@ -4,38 +4,27 @@
 # Usage info
 show_help() {
   cat << EOF
-  Usage: ${0##*/} [-h] [-m MODULE LIST] [-p PATH] [-v VERSION] [-c COMMIT MESSAGE] ...
-  Clone all Islandora Foundation modules to a given path.
+  Usage: ${0##*/} [-h] [-m MODULE LIST] [-c COMMIT MESSAGE] ...
+  Version bump all Islandora Foundation modules.
     
       -h                  display this help and exit
       -m MODULE LIST      path to line delimited list of modules.
-      -c COMMIT MESSAGE   commit message. example: "Version bump for 7.x-1.3"
-      -b GIT BRANCH       git branch. example: "7.x-1.3"
-      -p PATH             path to the Islandora Foundation modules should be clone.
+      -c COMMIT MESSAGE   commit message. example: "Version bump for 7.x-1.4"
 EOF
 }                
 
-ISLANDORA_CLONE_PATH=""
-ISLANDORA_VERSION=""
 ISLANDORA_COMMIT=""
-ISLANDORA_BRANCH=""
 ISLANDORA_MODULES_LIST=""
 
 OPTIND=1
 
-while getopts "h:p:m:ta:tm:" opt; do
+while getopts "h:m:c:" opt; do
   case "$opt" in
     h)
       show_help
       exit 0
       ;;
     m) ISLANDORA_MODULES_LIST=$OPTARG
-      ;;
-    p) ISLANDORA_CLONE_PATH=$OPTARG
-      ;;
-    v) ISLANDORA_VERSION=$OPTARG
-      ;;
-    b) ISLANDORA_BRANCH=$OPTARG
       ;;
     c) ISLANDORA_COMMIT=$OPTARG
       ;;      
@@ -47,15 +36,12 @@ while getopts "h:p:m:ta:tm:" opt; do
 done
 
 if [[ -n $opt ]]; then
-  # get modules
-  cd $ISLANDORA_CLONE_PATH
+  # version bump modules
   cat $ISLANDORA_MODULES_LIST | while read line; do
     cd $line
-    git co -
-    grep -rl "version = 7.x-dev" | sed -i 's#version = 7.x-dev#version = $ISLANDORA_VERSION#g'
-    git co $ISLANDORA_BRANCH
-    git commit -m $ISLANDORA_COMMIT .
-    git push origin $ISLANDORA_BRANCH
+    grep -rl "version = 7.x-dev" | xargs sed -i 's#version = 7.x-dev#version = 7.x-1.4#g'
+    git commit -m "$ISLANDORA_COMMIT" .
+    git push origin 7.x-1.4
     cd ..
   done
 fi
