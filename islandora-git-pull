@@ -1,0 +1,41 @@
+#!/bin/bash
+# Bash script to quickly grab all Islandora Foundation modules
+
+# Usage info
+show_help() {
+  cat << EOF
+  Usage: ${0##*/} [-h] [-m MODULE LIST] ...
+  Clone all Islandora Foundation modules to a given path.
+    
+      -h              display this help and exit
+      -m MODULE LIST  path to line delimited list of modules.
+EOF
+}                
+
+ISLANDORA_MODULES_LIST=""
+
+OPTIND=1
+
+while getopts "h:p:m:" opt; do
+  case "$opt" in
+    h)
+      show_help
+      exit 0
+      ;;
+    m) ISLANDORA_MODULES_LIST=$OPTARG
+      ;;
+    '?')
+      show_help >&2
+      exit 1
+      ;;
+  esac
+done
+
+if [[ -n $opt ]]; then
+  # update modules
+  cat $ISLANDORA_MODULES_LIST | while read line; do
+    cd $line
+    git pull origin 7.x-1.4
+    cd ..
+  done
+fi
