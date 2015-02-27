@@ -1,5 +1,5 @@
 #!/bin/bash
-# Bash script to quickly grab all Islandora Foundation modules
+# Bash script to quickly clone all Islandora Foundation modules
 
 # Usage info
 show_help() {

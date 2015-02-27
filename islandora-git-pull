@@ -1,5 +1,5 @@
 #!/bin/bash
-# Bash script to quickly grab all Islandora Foundation modules
+# Bash script to quickly pull all Islandora Foundation modules
 
 # Usage info
 show_help() {
@@ -35,7 +35,7 @@ if [[ -n $opt ]]; then
   # update modules
   cat $ISLANDORA_MODULES_LIST | while read line; do
     cd $line
-    git pull origin 7.x-1.4
+    git pull origin 7.x-1.5
     cd ..
   done
 fi

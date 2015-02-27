@@ -1,5 +1,5 @@
 #!/bin/bash
-# Bash script to quickly tag all Islandora Foundation for a release.
+# Bash script to quickly version bump all Islandora Foundation modules for a release.
 
 # Usage info
 show_help() {
@@ -39,9 +39,9 @@ if [[ -n $opt ]]; then
   # version bump modules
   cat $ISLANDORA_MODULES_LIST | while read line; do
     cd $line
-    grep -rl "version = 7.x-dev" | xargs sed -i 's#version = 7.x-dev#version = 7.x-1.4#g'
+    grep -rl "version = 7.x-dev" | xargs sed -i 's#version = 7.x-dev#version = 7.x-1.5#g'
     git commit -m "$ISLANDORA_COMMIT" .
-    git push origin 7.x-1.4
+    git push origin 7.x-1.5
     cd ..
   done
 fi
