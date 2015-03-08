@@ -15,6 +15,7 @@ islandora_oai
 islandora_ocr
 islandora_openseadragon
 islandora_paged_content
+islandora_pathauto
 islandora_pdfjs
 islandora_premis
 islandora_scholar
