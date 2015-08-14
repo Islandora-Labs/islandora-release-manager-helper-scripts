@@ -5,7 +5,7 @@
 show_help() {
   cat << EOF
   Usage: ${0##*/} [-h] [-m MODULE LIST] [-p PATH] [-a GIT TAG A] [-t GIT TAG M] ...
-  Clone all Islandora Foundation modules to a given path.
+  Tag all Islandora Foundation modules in a given path.
     
       -h              display this help and exit
       -m MODULE LIST  path to line delimited list of modules.
@@ -48,7 +48,7 @@ if [[ -n $opt ]]; then
   cd "$ISLANDORA_CLONE_PATH"
   cat "$ISLANDORA_MODULES_LIST" | while read line; do
     cd "$line"
-    git checkout 7.x-1.5
+    git checkout 7.x-1.6
     git tag -a "$ISLANDORA_GIT_TAGA" -m "$ISLANDORA_GIT_TAGM"
     git push --tags
     cd ..

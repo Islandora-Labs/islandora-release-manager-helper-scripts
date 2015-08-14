@@ -5,7 +5,7 @@
 show_help() {
   cat << EOF
   Usage: ${0##*/} [-h] [-m MODULE LIST] ...
-  Clone all Islandora Foundation modules to a given path.
+  Update (git pull) all Islandora Foundation modules in a given path.
     
       -h              display this help and exit
       -m MODULE LIST  path to line delimited list of modules.
@@ -33,9 +33,9 @@ done
 
 if [[ -n $opt ]]; then
   # update modules
-  cat $ISLANDORA_MODULES_LIST | while read line; do
-    cd $line
-    git pull origin 7.x-1.5
+  cat "$ISLANDORA_MODULES_LIST" | while read line; do
+    cd "$line"
+    git pull origin 7.x-1.6
     cd ..
   done
 fi

@@ -5,7 +5,7 @@
 show_help() {
   cat << EOF
   Usage: ${0##*/} [-h] [-m MODULE LIST] [-p PATH] [-a GIT TAG A] [-t GIT TAG M] ...
-  Clone all Islandora Foundation modules to a given path.
+  Create release branches for all Islandora Foundation modules in a given path.
     
       -h              display this help and exit
       -m MODULE LIST  path to line delimited list of modules.
@@ -45,7 +45,7 @@ if [[ -n $opt ]]; then
   cat "$ISLANDORA_MODULES_LIST" | while read line; do
     cd "$line"
     git checkout "$ISLANDORA_BRANCH_NAME"
-#    git push origin "$ISLANDORA_BRANCH_NAME"
+    git push origin "$ISLANDORA_BRANCH_NAME"
     cd ..
   done
 fi
