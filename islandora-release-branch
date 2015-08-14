@@ -44,8 +44,8 @@ if [[ -n $opt ]]; then
   cd "$ISLANDORA_CLONE_PATH"
   cat "$ISLANDORA_MODULES_LIST" | while read line; do
     cd "$line"
-    git checkout -b "$ISLANDORA_BRANCH_NAME"
-    git push origin "$ISLANDORA_BRANCH_NAME"
+    git checkout "$ISLANDORA_BRANCH_NAME"
+#    git push origin "$ISLANDORA_BRANCH_NAME"
     cd ..
   done
 fi
