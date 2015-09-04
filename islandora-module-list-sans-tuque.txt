@@ -9,6 +9,7 @@ islandora_checksum_checker
 islandora_fits
 islandora_importer
 islandora_internet_archive_bookreader
+islandora_jwplayer
 islandora_marcxml
 islandora_newspaper_batch
 islandora_oai
@@ -20,6 +21,7 @@ islandora_pdfjs
 islandora_premis
 islandora_populator
 islandora_scholar
+islandora_simple_workflow
 islandora_solr_facet_pages
 islandora_solr_metadata
 islandora_solr_search
