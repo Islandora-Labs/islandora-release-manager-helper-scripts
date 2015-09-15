@@ -39,6 +39,6 @@ if [[ -n $opt ]]; then
   # get modules
   cd $ISLANDORA_CLONE_PATH
   cat $ISLANDORA_MODULES_LIST | while read line; do
-    git clone git@github.com:islandora/$line
+    git clone -b 7.x-1.6 git@github.com:islandora/$line
   done
 fi
