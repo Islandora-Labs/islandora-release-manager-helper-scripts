@@ -39,7 +39,7 @@ if [[ -n $opt ]]; then
   # version bump modules
   cat "$ISLANDORA_MODULES_LIST" | while read line; do
     cd "$line"
-    grep -rl "version = 7.x-1.6-RC1" | xargs sed -i 's#version = 7.x-dev#version = 7.x-1.6#g'
+    grep -rl "version = 7.x-1.6-RC1" | xargs sed -i 's#version = 7.x-1.6-RC1#version = 7.x-1.6#g'
     git commit -m "$ISLANDORA_COMMIT" .
     git push origin 7.x-1.6
     cd ..
