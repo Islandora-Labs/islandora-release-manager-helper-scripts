@@ -44,6 +44,7 @@ class WatchGitHubOrgPRs:
       for old_pr in self.prs:
         if old_pr['id'] == new_pr['id']:
           is_new = False
+          notifications = True
       if is_new:
         self.notify(new_pr)
     if not notifications:
