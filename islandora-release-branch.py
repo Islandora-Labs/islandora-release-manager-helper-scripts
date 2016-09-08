@@ -35,8 +35,9 @@ Returns the link if found, or None if there wasn't any.
 def parse_next_link(links):
   link_list = links.split(', ')
   for link in link_list:
-    if link[1] == 'rel="next"':
-      return link[0].translate(None, '<>')
+    link_bits = link.split('; ')
+    if link_bits[1] == 'rel="next"':
+      return link_bits[0].translate(None, '<>')
   return None
 
 def main():
@@ -109,11 +110,11 @@ def main():
         if not select_branch:
           break
 
-        branches = requests.get("%s/repos/%s/%s/branches" % (args['api_url'], args['user'], repo), auth=auth)
+        branches = requests.get("%s/repos/%s/%s/branches" % (args['api_url'], args['user'], repo['name']), auth=auth)
         branches = json.loads(branches.text)
         branch_list = []
         for branch in branches:
-          branch_list.extend(branch['name'])
+          branch_list.append(branch['name'])
         print "Available branches:"
         for index, branch in enumerate(branch_list):
           print "  %s: %s" % (index, branch)
@@ -124,7 +125,7 @@ def main():
           selected_branch = raw_input("Choose a number from the list, or leave blank to skip this repository: ")
           if selected_branch == '':
             break
-        r = requests.get("%s/repos/%s/%s/git/refs/heads/%s" % (args['api_url'], args['user'], repo, branch_list[selected_branch]))
+        r = requests.get("%s/repos/%s/%s/git/refs/heads/%s" % (args['api_url'], args['user'], repo['name'], branch_list[selected_branch]))
 
       elif r.status_code != 200:
         error = json.loads(r.text)
@@ -137,7 +138,7 @@ def main():
         'ref': 'refs/heads/%s' % (args['branch']),
         'sha': head['object']['sha']
       }
-      r = requests.post('%s/repos/%s/%s/git/refs' % (args['api_url'], args['user'], repo), data=json.dumps(branch_data), auth=auth)
+      r = requests.post('%s/repos/%s/%s/git/refs' % (args['api_url'], args['user'], repo['name']), data=json.dumps(branch_data), auth=auth)
       if r.status_code != 201:
         error = json.loads(r.text)
         print "Unable to create the fork (message: %s)." % (error['message'])
